@@ -2,6 +2,14 @@
 
 A Python-based creative coding project that brings the divine silhouette art of **Maa Durga on Lion** to life. Using **Python Turtle** and **OpenCV**, it traces real reference contours layer-by-layer with live cursor movements.
 
+## Maa Durga Artwork
+
+This project uses Python, OpenCV, and Turtle to render a Maa Durga illustration from image contours.
+
+![Maa Durga on a lion](mataji.jpg)
+
+See the [Maa Durga AI-Generated Artwork License](IMAGE_LICENSE.md) for artwork usage terms and creator credit.
+
 ---
 
 ## ✨ Features
