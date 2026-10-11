@@ -8,10 +8,10 @@ IMAGE_PATH = BASE_DIR / "mataji.jpg"
 
 
 def load_reference_image():
-    image = cv2.imread(str(IMAGE_PATH), cv2.IMREAD_GRAYSCALE)
+    image = cv2.imread(str(IMAGE_PATH), cv2.IMREAD_COLOR)
     if image is None:
         raise FileNotFoundError(f"Could not find '{IMAGE_PATH}'. Make sure the image is in the same folder as this script.")
-    return image
+    return cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 
 def build_canvas(image):
@@ -41,6 +41,30 @@ def to_turtle_coords(x, y, half_w, half_h):
     return (x - half_w, half_h - y)
 
 
+def normalize_color(color):
+    return tuple(channel / 255 for channel in color)
+
+
+def get_realistic_fill(brightness):
+    if brightness < 50:
+        return (80, 30, 90)
+    if brightness < 85:
+        return (138, 35, 78)
+    if brightness < 120:
+        return (210, 58, 66)
+    if brightness < 155:
+        return (245, 136, 35)
+    if brightness < 195:
+        return (246, 190, 63)
+    if brightness < 225:
+        return (245, 212, 153)
+    return (255, 233, 196)
+
+
+def get_border_color(fill_color):
+    return tuple(max(0, channel - 35) for channel in fill_color)
+
+
 def render_shape(pen, cnt, fill_col, border_col, half_w, half_h):
     if len(cnt) < 3:
         return
@@ -52,7 +76,7 @@ def render_shape(pen, cnt, fill_col, border_col, half_w, half_h):
     pen.goto(tx, ty)
     pen.pendown()
 
-    pen.color(border_col, fill_col)
+    pen.color(normalize_color(border_col), normalize_color(fill_col))
     pen.begin_fill()
 
     step = 1 if len(cnt) <= 120 else 2 if len(cnt) <= 500 else 3
@@ -76,8 +100,8 @@ def main():
 
     screen = turtle.Screen()
     screen.setup(width=target_width + 80, height=target_height + 80)
-    screen.title("Live Drawing - Mataji and Lion (Exact Reference)")
-    screen.bgcolor("white")
+    screen.title("Live Drawing - Mataji and Lion (Vibrant & Realistic)")
+    screen.bgcolor("#f8f1e7")
     screen.tracer(10, 0)
     screen.delay(0)
 
@@ -98,17 +122,20 @@ def main():
             continue
         depth_layers[get_contour_depth(hierarchy, i)].append(cnt)
 
-    print("Drawing in progress... Watch the cursor create all details!")
+    print("Drawing in progress... Watch the cursor bring the artwork to life with richer color!")
 
     for d in range(max_depth + 1):
-        fill_color = "black" if d % 2 == 0 else "white"
-        border_color = fill_color
         for cnt in depth_layers[d]:
+            x, y, w, h = cv2.boundingRect(cnt)
+            patch = image[y:y + h, x:x + w]
+            brightness = 255 if patch.size == 0 else float(patch.mean())
+            fill_color = get_realistic_fill(brightness)
+            border_color = get_border_color(fill_color)
             render_shape(pen, cnt, fill_color, border_color, half_w, half_h)
 
     pen.hideturtle()
     screen.update()
-    print("Done! Exact reference matched perfectly.")
+    print("Done! The artwork now has a stronger, more vibrant color palette.")
     screen.mainloop()
 
 
