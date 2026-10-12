@@ -12,7 +12,7 @@ The main project lives in the [ma durga/Mataji-python-sketch](./ma%20durga/Mataj
 - `ma durga/Mataji-python-sketch/mataji.jpg` — reference image
 - `ma durga/Mataji-python-sketch/run_mataji.bat` — Windows shortcut to run the script
 - `ma durga/Mataji-python-sketch/LICENSE` — project licensing terms
-- `ma durga/Mataji-python-sketch/IMAGE_LICENSE.md` — artwork-specific usage terms
+- `ma durga/Mataji-python-sketch/LICENSE` — project license terms
 
 ## Requirements
 
@@ -46,4 +46,4 @@ It is intended for devotional, educational, and artistic exploration.
 
 ## Note
 
-Please review the artwork-specific license in [ma durga/Mataji-python-sketch/IMAGE_LICENSE.md](./ma%20durga/Mataji-python-sketch/IMAGE_LICENSE.md) before redistributing or using the generated work commercially.
+Please review the project license in [ma durga/Mataji-python-sketch/LICENSE](./ma%20durga/Mataji-python-sketch/LICENSE) before redistributing or using the generated work commercially.

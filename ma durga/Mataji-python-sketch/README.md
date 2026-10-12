@@ -8,7 +8,7 @@ This project uses Python, OpenCV, and Turtle to render a Maa Durga illustration 
 
 ![Maa Durga on a lion](mataji.jpg)
 
-See the [Maa Durga AI-Generated Artwork License](IMAGE_LICENSE.md) for artwork usage terms and creator credit.
+See the [project license](LICENSE) for usage terms and creator credit.
 
 ---
 
