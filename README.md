@@ -1,49 +1,33 @@
-# Maa Durga Image Repository
+# Ma Durga Artwork and Live Drawing
 
-This repository contains a Python-based creative coding project that draws a Maa Durga artwork using OpenCV contour extraction and Python Turtle.
+A Python 3.13 OpenCV project that colorizes a Ma Durga and lion sketch, retains
+its original dark linework, saves a PNG, and progressively animates the drawing.
 
-## Project Overview
+## Project
 
-The main project lives in the [ma durga/Mataji-python-sketch](./ma%20durga/Mataji-python-sketch) folder. It reads a reference image, detects contours, and uses a live turtle cursor to recreate the artwork in a layered, sketch-like style.
+The application is in [ma durga/Ma-Durga-sketch](./ma%20durga/Ma-Durga-sketch/).
+Its README contains setup, input image, and animation details.
 
-## Included Files
+## Quick start on Windows
 
-- `ma durga/Mataji-python-sketch/mataji.py` — main drawing script
-- `ma durga/Mataji-python-sketch/mataji.jpg` — reference image
-- `ma durga/Mataji-python-sketch/run_mataji.bat` — Windows shortcut to run the script
-- `ma durga/Mataji-python-sketch/LICENSE` — project licensing terms
-- `ma durga/Mataji-python-sketch/LICENSE` — project license terms
+Install the dependencies:
 
-## Requirements
-
-Install the dependencies with:
-
-```bash
-pip install opencv-python numpy
+```powershell
+python -m pip install opencv-python numpy
 ```
 
-## Run the project
+Add a source sketch to the project folder. `image_4.png` is preferred;
+`ma_durga.jpg` is used as the fallback. Then run:
 
-From the project directory:
-
-```bash
-cd "ma durga/Mataji-python-sketch"
-python mataji.py
+```powershell
+cd "ma durga\Ma-Durga-sketch"
+python ma_durga.py
 ```
 
-On Windows, you can also double-click `run_mataji.bat`.
+Alternatively, double-click `run_ma_durga.bat`.
 
-## Purpose
+The generated image is saved as `corrected_ma_durga_final.png`. The live
+animation first traces the artwork on white, then reveals its colorized finish.
 
-This project is a small creative coding experiment that blends:
-
-- computer vision
-- image contour analysis
-- procedural art generation
-- live animation via Python Turtle
-
-It is intended for devotional, educational, and artistic exploration.
-
-## Note
-
-Please review the project license in [ma durga/Mataji-python-sketch/LICENSE](./ma%20durga/Mataji-python-sketch/LICENSE) before redistributing or using the generated work commercially.
+Review the [project license](./ma%20durga/Ma-Durga-sketch/LICENSE) before
+redistributing or using the artwork commercially.
